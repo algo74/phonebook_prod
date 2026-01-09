@@ -11,7 +11,7 @@
     "start": "node index.js",
     "dev": "node --watch index.js",
     "build:ui": "cd ../phonebook && npm run build && rm -rf ../phonebook_server/dist && cp -r dist ../phonebook_server/dist",
-    "deploy": "npm install && rm -rf ../phonebook_prod/server && cp -r . ../phonebook_prod/server",
+    "deploy": "rm -rf ../phonebook_prod/server && cp -r . ../phonebook_prod/server",
     "deploy:full": "npm run build:ui && npm run deploy"
   },
   "dependencies": {

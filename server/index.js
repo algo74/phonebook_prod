@@ -31,8 +31,6 @@ let persons = [
 const getNextId = () => String(Math.floor(Math.random() * 1_000_000_000))
 
 const app = express()
-app.use(express.json())
-app.use(express.static('dist'))
 app.use(morgan(function (tokens, req, res) {
     return [
         tokens.method(req, res),
@@ -42,6 +40,8 @@ app.use(morgan(function (tokens, req, res) {
         tokens['response-time'](req, res), 'ms'
     ].join(' ') + (req.body ? ' ' + JSON.stringify(req.body) : '')
 }))
+app.use(express.json())
+app.use(express.static('dist'))
 
 app.get('/info', (req, res) => {
     const date = new Date()
