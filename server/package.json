@@ -9,14 +9,23 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
+    "start:env": "export $(cat .env | xargs) && npm start",
     "dev": "node --watch index.js",
+    "dev:env": "export $(cat .env | xargs) && npm run dev",
     "build:ui": "cd ../phonebook && npm run build && rm -rf ../phonebook_server/dist && cp -r dist ../phonebook_server/dist",
     "deploy": "rm -rf ../phonebook_prod/server && cp -r . ../phonebook_prod/server",
-    "deploy:full": "npm run build:ui && npm run deploy"
+    "deploy:full": "npm run build:ui && npm run deploy",
+    "lint": "eslint ."
   },
   "dependencies": {
-    "cors": "^2.8.5",
     "express": "^5.2.1",
+    "mongoose": "^9.1.2",
     "morgan": "^1.10.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.2",
+    "@stylistic/eslint-plugin": "^5.7.0",
+    "eslint": "^9.39.2",
+    "globals": "^17.0.0"
   }
 }
